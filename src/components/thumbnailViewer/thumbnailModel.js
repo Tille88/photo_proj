@@ -1,14 +1,4 @@
-var mergeObj = function(target){
-	var args = [].slice.call(arguments, 1);
-	args.forEach(function(src) {
-		for(var prop in src){
-			if ({}.hasOwnProperty.call(src, prop)){
-				target[prop] = src[prop];
-			}
-		}
-	});
-	return target;
-};
+import {mergeObj} from '../../core/object';
 
 var selectEl = function(queryString){
 	return document.querySelector(queryString);

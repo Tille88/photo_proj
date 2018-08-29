@@ -1,14 +1,22 @@
-import model from './model';
-import view from './view';
-import controller from './controller';
+import model from './components/imageViewer/model';
+import view from './components/imageViewer/view';
+import controller from './components/imageViewer/controller';
 import './style/main.css';
 
 import thumbNails from './components/thumbnailViewer/thumbnailModel';
 
+// Turn this into main controller...
+// And hook up with events/actions
 
-window.addEventListener('load', thumbNails({
-	selector: '.thumbnail-view',
-	preview: '.current-sel'}).init(), false);
+var initViews = function(){
+	thumbNails({
+		selector: '.thumbnail-view',
+		preview: '.current-sel'}).init();
+};
+
+window.addEventListener('load', initViews, false);
+
+
 
 // selectElementArr('.thumbnail-view');
 // TODO: make object for loadqueue

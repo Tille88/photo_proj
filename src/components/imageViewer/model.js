@@ -1,5 +1,5 @@
-import fileNameArr from './data_read_in/file_name_arr';
-import ImageLoadQueue from './data_structures/priority_queue/ImageLoadQueue';
+import fileNameArr from '../../data_read_in/file_name_arr';
+import ImageLoadQueue from './ImageLoadQueue';
 
 export default (function(){
 	var imgData = ImageLoadQueue({

@@ -1,5 +1,5 @@
 import {pushArr} from "../../core/array";
-
+import {mergeObj} from '../../core/object';
 // var privateStore = function(){
 // 	var wm = new WeakMap();
 // 	return
@@ -8,19 +8,6 @@ import {pushArr} from "../../core/array";
 // accessingPrivateData() {
 // 	const privateData = myWeakMap.get(this); // getting the private data
 // }
-var mergeObj = function(target){
-	var args = [].slice.call(arguments, 1);
-	args.forEach(function(src) {
-		for(var prop in src){
-			if ({}.hasOwnProperty.call(src, prop)){
-				target[prop] = src[prop];
-			}
-		}
-	});
-	return target;
-};
-
-
 // Start by getting functionality, then refactor to get data privacy...
 
 // FOR PUBLIC INSTANCE...
