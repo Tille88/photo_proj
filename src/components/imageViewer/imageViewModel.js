@@ -1,14 +1,5 @@
 import {pushArr} from "../../core/array";
 import {mergeObj} from '../../core/object';
-// var privateStore = function(){
-// 	var wm = new WeakMap();
-// 	return
-// }
-// const myWeakMap = new WeakMap();
-// accessingPrivateData() {
-// 	const privateData = myWeakMap.get(this); // getting the private data
-// }
-// Start by getting functionality, then refactor to get data privacy...
 
 // FOR PUBLIC INSTANCE...
 var publicVersion = function(options){
@@ -20,15 +11,17 @@ var publicVersion = function(options){
 		currIdx: options.currIdx || 0,
 		maxBuffer: options.maxBuffer || 2,
 		inMemoryCanvas: document.createElement('canvas'),
-		// inMemoryCtx: document.createElement('canvas').getContext("2d"),
 	};
 };
 
 // FOR PUBLIC SHARED...
-var ImageLoadPrototype = {
+var PrototypePublic = {
 	setIdx: function(idx){
 		this.currIdx = idx;
 		this.bufferIdxFnc();
+	},
+	getIdx: function(){
+		return this.currIdx;
 	},
 	// should be private:
 	clearBufferQ: function(){
@@ -36,6 +29,7 @@ var ImageLoadPrototype = {
 	},
 	init: function(){
 		this.bufferIdxFnc();
+		return this;
 	},
 	bufferIdxFnc: function(){
 		// var self = this;
@@ -59,25 +53,26 @@ var ImageLoadPrototype = {
 		var ctx = canvas.getContext("2d");
 		/** Local listener, will be refactored */
 		function listener(){
-			canvas.width = img.naturalWidth;//img.width;
-			canvas.height = img.naturalHeight;//img.height;
+			canvas.width = img.naturalWidth;
+			canvas.height = img.naturalHeight;
 			ctx.drawImage(img, 0, 0);
 			data.imageData = ctx.getImageData(0, 0, img.naturalWidth, img.naturalHeight);
 			data.loaded = true;
 			img.removeEventListener('load', listener);
 		}
 		img.addEventListener('load', listener, false);
-	}
+	},
 };
 
 
 // Set delegate... and have function which creates this...
-var ImageLoadQueue = function(options){
-	return mergeObj(Object.create(ImageLoadPrototype), publicVersion(options));
+// Can include model here?
+var ImageLoadFactory = function(options){
+	return mergeObj(Object.create(PrototypePublic), publicVersion(options));
 };
 
 // Mixins? (need to use `this`)
+// Privacy from delegates to own?
+// Can load in all to one big object first... for public?
 
-
-
-export default ImageLoadQueue;
+export default ImageLoadFactory;
