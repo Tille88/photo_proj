@@ -14,7 +14,10 @@
       "no-var": "off",
       "no-trailing-spaces": "error",
 			"quotes": "off",
-			"no-tabs": "off"
+			"no-tabs": "off",
+			"space-before-blocks": "off",
+			"keyword-spacing": "off",
+			"prefer-rest-params": "off"
 	},
 	"parserOptions": {
 		"sourceType": "module"

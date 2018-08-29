@@ -37,7 +37,11 @@ module.exports = ({mode, presets} = {mode: 'priduction', presets: []}) =>
 				]
 			},
 			plugins: [
-				new HtmlWebpackPlugin(),
+				new HtmlWebpackPlugin({
+					title: 'Image Gallery',
+					template: './src/index.html',
+					filename: './index.html'
+				}),
 				new webpack.ProgressPlugin()
 			]
 		},
