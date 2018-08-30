@@ -2,10 +2,9 @@
 // import view from './components/imageViewer/view';
 // import controller from './components/imageViewer/controller';
 import fileNameArr from './data_read_in/file_name_arr';
+import thumbNails from './components/thumbnailViewer/thumbnailView';
+import ImageViewer from './components/imageViewer/ImageViewer';
 import './style/main.css';
-
-import thumbNails from './components/thumbnailViewer/thumbnailModel';
-import imageViewer from './components/imageViewer/imageViewView';
 
 // Turn this into main controller...
 // And hook up with events/actions
@@ -15,15 +14,19 @@ var initViews = function(){
 	thumbNails({
 		selector: '.thumbnail-view',
 		preview: '.current-sel'}).init();
-
 	// Init imageViewer view
-	imageViewer({}).init();
-
+	ImageViewer({
+		data: fileNameArr.map(function(el) {
+			return {
+				'fileName': "./assets/prev/" + el + ".png",
+				'loaded': false,
+				'fileType': (~el.search("bw") + 1) ? "cl" : "bw",
+			};
+		}),
+	}).init();
 };
 
 window.addEventListener('load', initViews, false);
-
-
 
 // selectElementArr('.thumbnail-view');
 // TODO: make object for loadqueue
