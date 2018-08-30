@@ -3,11 +3,8 @@
 // import controller from './components/imageViewer/controller';
 import fileNameArr from './data_read_in/file_name_arr';
 import thumbNails from './components/thumbnailViewer/thumbnailView';
-import ImageViewer from './components/imageViewer/ImageViewer';
+import ImageViewer from './components/imageViewer/imageViewer';
 import './style/main.css';
-
-// Turn this into main controller...
-// And hook up with events/actions
 
 var initViews = function(){
 	// Init thumbnails view
@@ -28,8 +25,4 @@ var initViews = function(){
 
 window.addEventListener('load', initViews, false);
 
-// selectElementArr('.thumbnail-view');
-// TODO: make object for loadqueue
-// Create "n:th" fucntion and pipe and throttle function => functional
-// Pass in functions and listeners functionality from model?
-// Can extend this through model?
+// Create "n:th/once" fucntion and pipe and throttle function => functional

@@ -1,4 +1,4 @@
-import ImageViewerModel from './ImageViewerModel';
+import ImageViewerModel from './imageViewerModel';
 import {mergeObj} from '../../core/object';
 import MessageCenter from '../../architecture/MessageCenter';
 
