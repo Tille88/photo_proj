@@ -67,12 +67,13 @@ var PrototypePublic = {
 	imgLoadHandler: function(imgObj){
 		var canvas = this.inMemoryCanvas;
 		var ctx = canvas.getContext("2d");
-		canvas.width = imgObj.img.naturalWidth;
-		canvas.height = imgObj.img.naturalHeight;
+		// debugger;
+		canvas.width = imgObj.img.width;
+		canvas.height = imgObj.img.height;
 		ctx.drawImage(imgObj.img, 0, 0);
 		imgObj.imageData = ctx.getImageData(0, 0,
-			imgObj.img.naturalWidth,
-			imgObj.img.naturalHeight
+			imgObj.img.width,
+			imgObj.img.height
 		);
 		imgObj.loaded = true;
 	},

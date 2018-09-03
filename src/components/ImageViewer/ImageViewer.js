@@ -20,25 +20,20 @@ var PrototypePublic = {
 	init: function(){
 		var self = this;
 		this.model.setIdx(0);
-		this.view.width = 1440;
-		this.view.height = 900;
+		this.view.width = this.getWidthDim();
+		this.view.height = 0.4 * this.view.width;
 		this.viewCtx = this.view.getContext("2d");
-		// this.viewCtx.putImageData(imgData, 0, 0);
 		this.target.appendChild(this.view);
 		this.initEventListeners.call(this);
-		// debugger;
 		this.model.data[this.model.getIdx()].promise
 			.then(
 				function() {
 					this.render();
 				}.bind(self));
-		// this.render();
 		this.registerMessages();
 	},
 	initEventListeners: function(){
-		// refactor to this-call instead of window
 		this.view.addEventListener('click', function(e){
-			// Refactor to action...
 			var rect = e.target.getBoundingClientRect();
 			var x = e.clientX - rect.left;
 			var side = (x < rect.width/2) ? "left": "right";
@@ -53,6 +48,9 @@ var PrototypePublic = {
 	},
 	render: function(){
 		var imgData = this.model.data[this.model.getIdx()].imageData;
+		// this.viewCtx.clearRect(0, 0, this.view.width, this.view.height);
+    // this.viewCtx.scale(2, 2);
+    // this.viewCtx.drawImage(imgData,0,0);
 		this.viewCtx.putImageData(imgData, 0, 0);
 	},
 	registerMessages: function(){
@@ -64,8 +62,10 @@ var PrototypePublic = {
 				}.bind(this));
 		}.bind(this));
 	},
+	getWidthDim: function(){
+		return this.target.clientWidth;
+	},
 };
-
 
 // Set delegate... and have function which creates this...
 // Can have model initialized here?
