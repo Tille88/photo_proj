@@ -24,11 +24,14 @@ var publicVersion = function(options){
 // FOR PUBLIC SHARED...
 var PrototypePublic = {
 	setIdx: function(idx){
-		this.currIdx = idx;
+		this.currIdx = this.idxCutoff(idx);
 		this.bufferIdxFnc();
 	},
 	getIdx: function(){
 		return this.currIdx;
+	},
+	idxCutoff: function(idx){
+		return (idx >= 0) ? idx % this.data.length : this.data.length + idx;
 	},
 	// should be private:
 	clearBufferQ: function(){
@@ -42,8 +45,9 @@ var PrototypePublic = {
 	bufferIdxFnc: function(){
 		var idx = this.currIdx;
 		this.clearBufferQ();
-		this.bufferQueue = (idx > 0) ? [idx-1] : [];
-		pushArr(this.bufferQueue, [idx+2, idx+1, idx]);
+		// this.bufferQueue = (idx > 0) ? [idx-1] : [];
+		pushArr(this.bufferQueue, [idx-1, idx+2, idx+1, idx]
+			.map(this.idxCutoff.bind(this)));
 		while(this.bufferQueue.length){
 			var idxToLoad = this.bufferQueue.pop();
 			if(!this.data[idxToLoad].loaded){
@@ -65,16 +69,18 @@ var PrototypePublic = {
 		});
 	},
 	imgLoadHandler: function(imgObj){
-		var canvas = this.inMemoryCanvas;
-		var ctx = canvas.getContext("2d");
-		// debugger;
-		canvas.width = imgObj.img.width;
-		canvas.height = imgObj.img.height;
-		ctx.drawImage(imgObj.img, 0, 0);
-		imgObj.imageData = ctx.getImageData(0, 0,
-			imgObj.img.width,
-			imgObj.img.height
-		);
+		// Saved for later when need to do manipulation
+		// var canvas = this.inMemoryCanvas;
+		// var ctx = canvas.getContext("2d");
+		// // debugger;
+		// canvas.width = imgObj.img.width;
+		// canvas.height = imgObj.img.height;
+		// ctx.drawImage(imgObj.img, 0, 0);
+		// imgObj.imageData = ctx.getImageData(0, 0,
+		// 	imgObj.img.width,
+		// 	imgObj.img.height
+		// );
+		// imgObj.imageData =
 		imgObj.loaded = true;
 	},
 };

@@ -10,6 +10,7 @@ var publicVersion = function(options){
 		currIdx: options.currIdx || 0,
 		currPreview: selectEl(options.preview),
 		hoverEl: null,
+		container: selectEl(options.container)
 	};
 };
 
@@ -32,6 +33,7 @@ var ThumbNailPrototype = {
 		var self = this;
 		this.registerMessages();
 		[].forEach.call(this.data.children, function(el, i){
+			// i--; // Since preview also div within flexbox
 			el.addEventListener('click', function() {
 				self.setIdx(i);
 			}, false);
@@ -39,11 +41,13 @@ var ThumbNailPrototype = {
 				self.setCurrPreview(el);
 			}, false);
 		});
+		this.container.addEventListener('mouseleave', function(e){
+			if(e.target === e.currentTarget){
+				this.setCurrPreview(this.data.children[this.currIdx]);
+			}
+		}.bind(this));
 	},
 	registerMessages: function(){
-		// if(this.actions){
-		// this.register('set-id', function(idx){ console.log(idx); });
-		// }
 		MessageCenter().register('set-id', function(idx){
 			this.setCurrPreview(this.data.children[idx]);
 		}.bind(this));

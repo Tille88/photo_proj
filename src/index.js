@@ -30,8 +30,12 @@ var imageData = fileNameArr.map(function(el, i, arr){
 var initViews = function(){
 	// Init thumbnails view
 	thumbNails({
-		selector: '.thumbnail-view',
-		preview: '.current-sel'}).init();
+		// selector: '.thumbnail-view',
+		selector: '.flexbox-thumbnails',
+		preview: '.curr-sel-background',
+		container: '.container',
+		// preview: '.current-sel-img',
+	}).init();
 	// Init imageViewer view
 	ImageViewer({
 		// data: fileNameArr.map(function(el) {
