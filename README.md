@@ -31,13 +31,15 @@ This is enough to figure out most required interfaces and objects needed for cle
 - **Data loading changes:**
 
 	- [ ] On resize, will need to check which already cached image data is of insufficient size and reload if needed. With throttle/delay.
-	
+
 	- [ ] Spinner if currently loading/processing transitions, SVG-based
 
 - **First image effects:**
-	
+
 	- [ ] SVG filter/masks effect, showing color/bw versions of same image, including text (info button), etc. "welcome page", circle crops...
-	
+
+	-	[x] Mockup of above, without info text title, resize, and similar. Fixed photo size, non-mobile [github](https://github.com/Tille88/photo_startpage) [codepen](https://codepen.io/jonastillman/full/WgBoOQ/)
+
 - **Formalizing infrastructure (leading to refactoring of the sandbox version):**
 
 	- [ ] Implement testing framework, and start by testing base functionality, since TDD seems like the way to go about:
@@ -55,9 +57,9 @@ This is enough to figure out most required interfaces and objects needed for cle
 			- Composability of different factories... need to cache imput though
 			- Callable with .of([optional])
 			- If init() method, should be called on intialization. Already have factory function, can be lazy initialized through using that already...
-			
+
 	- [ ] Other functionality not tested this early
-	
+
 	- [ ] Refactor previous code using above helpers
 
 	- [ ] Add documentation to more obvious previously written code now when abstractions are more settled.
@@ -65,7 +67,7 @@ This is enough to figure out most required interfaces and objects needed for cle
 - **Worker:**
 
 	- [ ] Webworker infrastructure will be needed for image processing as seen in step below:
-	
+
 - **Transitions (MAIN PRIO FOR PROJECT, SIMPLE LIBRARY-LIKE STRUCTURE OF FUNCTIONALITY)**
 
 	- [ ] BW photos: Line/edge detection test first (Canny), if not visually effective, manually extract focus points of images and connect with image corners. Transition line with 'water fill effects' for posterialized photo of transitions.
@@ -87,7 +89,7 @@ This is enough to figure out most required interfaces and objects needed for cle
 	- [ ] LIGHT DIRECTION: analyze image for light direction?
 
 	- [ ] GENERALIZATIONS: alternative implementation to WebGL for heavy image processing
-	
+
 	- [ ] GENERALIZATIONS: make work differnetly for differnt screen sizes
-	
+
 	- [ ] GENERALIZATIONS: precalculated/processed transitions data if no webworker/slow processing
