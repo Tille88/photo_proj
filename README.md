@@ -32,7 +32,10 @@ This is enough to figure out most required interfaces and objects needed for cle
 
 	- [ ] On resize, will need to check which already cached image data is of insufficient size and reload if needed. With throttle/delay.
 
-	- [ ] Spinner if currently loading/processing transitions, SVG-based
+	- [ ] Spinner if currently loading/processing transitions, SVG-based simple/JS overly complex
+
+	- [x] Mockup of above named spinner (simple version...)
+	 [github](https://github.com/Tille88/cheap_spinner) [codepen](https://codepen.io/jonastillman/full/RePVWN/)
 
 - **First image effects:**
 
