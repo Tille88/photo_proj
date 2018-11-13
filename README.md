@@ -1,3 +1,5 @@
+#ON HOLD DUE TO HAVING SEEN WAAAAAY TOO MANY DELAUNAY/POLYGONIZATION OF PHOTOS ONLINE LATELY, REFOCUSING OTHER THINGS THAT HAVE MORE SHORT TERM VALUE
+
 # photo_proj
 
 Personal sandbox project photo display, will be fleshed out and stylized as per below.
